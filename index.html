@@ -22,21 +22,25 @@
     <meta name="keywords" content="FiveM, Scripts, Development, LUA, JavaScript, Gaming, Server, GuardianLabs">
     <meta name="author" content="GuardianLabs">
     <meta name="theme-color" content="#1a202c"> <style>
-        /* --- Rewritten CSS for CodeGuard Dark Theme Aesthetic --- */
+        
         :root {
-            /* Color Palette based on CodeGuard Image */
-            --color-bg-dark: #0f0f13; /* Very Dark Background */
-            --color-bg-card: #1a1a21; /* Slightly Lighter Background for Cards */
-            --color-bg-navbar: rgba(15, 15, 19, 0.95); /* Semi-transparent background */
+            
+            --color-bg-dark: #0f0f13;
+            --color-bg-card: #1a1a21;
+            --color-bg-navbar: rgba(15, 15, 19, 0.95);
             --color-border-dark: #2d3748;
             --color-text-white: #ffffff;
-            --color-text-light: #a0a8b5; /* Light grey/off-white for subtitles/body */
-            /* --- UPDATED COLORS FOR PURPLE THEME --- */
-            --color-primary-start: #9932CC; /* Darker Purple/Amethyst */
-            --color-primary-end: #CC99FF; /* Lighter Purple/Lavender */
+            --color-text-light: #a0a8b5;
+            
+            --color-primary-start: #9932CC;
+            --color-primary-end: #CC99FF;
             --color-shadow-dark: rgba(0, 0, 0, 0.5);
-            --color-star: #f39c12; /* Amber - kept for ratings */
-            --color-discord: #7289da; /* Discord Blue */
+            --color-star: #f39c12;
+            --color-discord: #7289da;
+            
+            
+            --color-bg-moving-1: #1a1a1e;
+            --color-bg-moving-2: #0f0f13;
         }
 
         * {
@@ -52,6 +56,38 @@
             overflow-x: hidden;
             background: var(--color-bg-dark);
             transition: background 0.3s, color 0.3s;
+            position: relative; 
+            z-index: 1;
+        }
+        
+        
+        @keyframes subtleMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250%;
+            height: 250%;
+            z-index: -1;
+            
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    var(--color-bg-moving-1) 0,
+                    var(--color-bg-moving-1) 1px,
+                    transparent 1px,
+                    transparent 10px
+                ),
+                radial-gradient(circle at 50% 50%, #1a1a21 0%, #0f0f13 70%); 
+            background-size: 300% 300%; 
+            animation: subtleMove 45s ease-in-out infinite alternate;
+            opacity: 0.8; 
         }
 
         .container {
@@ -60,9 +96,9 @@
             padding: 0 20px;
         }
 
-        /* --- Utility & Core Styling --- */
+        
         .gradient-text {
-            /* Creating the Purple gradient effect - Set to move RIGHT to LEFT */
+            
             background: linear-gradient(to left, var(--color-primary-start), var(--color-primary-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -70,15 +106,12 @@
             text-fill-color: transparent;
         }
         
-        /* New style for the image logo to sit next to the text */
+        
         .logo-symbol-img {
-            /* NEW SIZE: Reduced by x2 from the previous 6.0em */
-            height: 3.0em; 
+            height: 2.7rem; 
             width: auto;
             object-fit: contain;
-            /* Adjusted vertical alignment to visually center the smaller logo */
-            vertical-align: -1.0em; 
-            /* ADJUSTMENT: Reduced margin-right to bring text closer to the logo */
+            vertical-align: middle; 
             margin-right: -10px; 
             margin-left: 0;
             padding: 0;
@@ -89,38 +122,60 @@
             align-items: center;
         }
         
-        /* --- Navbar --- */
+        
         .navbar {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
-            background: var(--color-bg-navbar);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border-dark);
+            background: none; 
+            border-bottom: none;
+            box-shadow: none;
             z-index: 1000;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px var(--color-shadow-dark);
+            padding-top: 10px; 
         }
 
         .nav-container {
+            
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 2rem;
-            max-width: 1200px;
+            padding: 0.7rem 1.5rem; 
+            max-width: 900px;
             margin: 0 auto;
+            
+            
+            border-radius: 50px; 
+            
+            
+            background: rgba(15, 15, 19, 0.95); 
+            backdrop-filter: blur(8x);
+            border: 1px solid rgba(204, 153, 255, 0.2); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 10px rgba(153, 50, 204, 0.1); 
+            
+            transition: all 0.4s ease-in-out;
+        }
+        
+        
+        .navbar.scrolled .nav-container {
+            
+            background: rgba(15, 15, 19, 0.7); 
+            backdrop-filter: blur(20px); 
+            
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 15px rgba(204, 153, 255, 0.4); 
+            border-color: rgba(204, 153, 255, 0.4);
         }
 
         .nav-logo h2 {
             color: var(--color-text-white);
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             letter-spacing: -0.5px;
-            margin: 0; /* Ensures vertical alignment with image */
+            margin: 0;
         }
         
-        /* Removed .nav-logo h2:before - Replaced by image */
-
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -144,7 +199,7 @@
             gap: 0.5rem;
             background: none;
             color: var(--color-text-white);
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             border-radius: 6px;
             transition: all 0.3s ease;
             font-weight: 600;
@@ -154,25 +209,24 @@
         .docs-btn:hover {
             border-color: var(--color-primary-end);
             color: var(--color-primary-end);
-            box-shadow: 0 0 10px rgba(204, 153, 255, 0.4); /* Updated Shadow */
+            box-shadow: 0 0 10px rgba(204, 153, 255, 0.4);
         }
 
         .docs-btn svg {
-            stroke: currentColor; /* Use current text color for icon */
+            stroke: currentColor;
         }
 
-        /* --- Hero Section --- */
+        
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            padding-top: 5rem;
+            padding-top: 6rem; 
             padding-bottom: 3rem;
-            /* Background subtle radial gradient */
-            background: radial-gradient(circle at 50% 10%, #1a1a21 0%, #0f0f13 70%);
+            background: radial-gradient(circle at 50% 10%, #1a1a21 0%, #0f0f13 80%);
         }
 
         .hero-content {
@@ -185,7 +239,8 @@
             margin-bottom: 1rem;
             line-height: 1.1;
             color: var(--color-text-white);
-            text-shadow: 0 0 5px rgba(204, 153, 255, 0.2); /* Updated Shadow */
+            
+            text-shadow: 0 0 10px rgba(204, 153, 255, 0.4), 0 0 20px rgba(153, 50, 204, 0.3);
         }
 
         .hero-subtitle {
@@ -217,17 +272,18 @@
         }
 
         .btn-primary {
-            /* Gradient Button for Primary Action */
+            
             background: linear-gradient(90deg, var(--color-primary-start), var(--color-primary-end));
             color: var(--color-text-white);
-            box-shadow: 0 4px 15px rgba(153, 50, 204, 0.4); /* Updated Shadow */
-            border: 1px solid rgba(204, 153, 255, 0.5); /* Updated Border */
+            box-shadow: 0 4px 15px rgba(153, 50, 204, 0.4);
+            border: 1px solid rgba(204, 153, 255, 0.5);
         }
 
         .btn-primary:hover {
             background: linear-gradient(90deg, var(--color-primary-end), var(--color-primary-start));
-            box-shadow: 0 8px 20px rgba(153, 50, 204, 0.6); /* Updated Shadow */
-            transform: translateY(-2px);
+            
+            box-shadow: 0 10px 30px rgba(153, 50, 204, 0.8); 
+            transform: translateY(-5px) scale(1.02);
         }
 
         .btn-secondary {
@@ -247,7 +303,7 @@
             stroke: currentColor;
         }
 
-        /* --- General Sections --- */
+        
         .section {
             padding: 5rem 0;
             position: relative;
@@ -273,7 +329,7 @@
             border-radius: 2px;
         }
 
-        /* --- About Section --- */
+        
         .about {
             background: var(--color-bg-card);
             border-top: 1px solid var(--color-border-dark);
@@ -302,19 +358,23 @@
             gap: 1.5rem;
         }
 
+        
         .feature-card {
             background: var(--color-bg-dark);
             padding: 2rem;
             border-radius: 12px;
             border: 1px solid var(--color-border-dark);
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(204, 153, 255, 0.2); 
+            
             border-color: var(--color-primary-end);
+            border-image: linear-gradient(45deg, var(--color-primary-end), var(--color-primary-start)) 1; 
         }
 
         .feature-icon {
@@ -347,7 +407,7 @@
             font-size: 0.95rem;
         }
 
-        /* --- Reviews Section --- */
+        
         .reviews-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -391,6 +451,7 @@
             align-items: stretch;
         }
 
+        
         .review-card {
             background: var(--color-bg-card);
             padding: 1.75rem;
@@ -406,8 +467,10 @@
 
         .review-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(153, 50, 204, 0.15); /* Updated Shadow */
+            box-shadow: 0 10px 25px rgba(153, 50, 204, 0.3);
             border-color: var(--color-primary-start);
+            
+            border-image: linear-gradient(90deg, var(--color-primary-end), var(--color-primary-start)) 1;
         }
 
         .review-header {
@@ -488,12 +551,13 @@
         }
 
 
-        /* --- Store Section --- */
+        
         .store-content {
             max-width: 700px;
             margin: 0 auto;
         }
 
+        
         .store-card {
             background: var(--color-bg-card);
             padding: 4rem;
@@ -505,8 +569,9 @@
         }
 
         .store-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(153, 50, 204, 0.2); /* Updated Shadow */
+            
+            transform: translateY(-10px); 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(204, 153, 255, 0.5); 
             border-color: var(--color-primary-start);
         }
 
@@ -519,7 +584,8 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
-            box-shadow: 0 0 15px rgba(204, 153, 255, 0.4); /* Updated Shadow */
+            
+            box-shadow: 0 0 15px rgba(204, 153, 255, 0.6), 0 0 30px rgba(153, 50, 204, 0.3);
         }
         
         .store-icon svg {
@@ -571,7 +637,7 @@
             padding: 1rem 3rem;
         }
 
-        /* --- Footer --- */
+        
         .footer {
             background: var(--color-bg-navbar);
             padding: 4rem 0 2rem;
@@ -591,11 +657,9 @@
             font-size: 1.5rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            margin: 0; /* Ensures vertical alignment with image */
+            margin: 0;
         }
         
-        /* Removed .footer-section h3:before - Replaced by image */
-
         .footer-section h4 {
             color: var(--color-text-white);
             font-size: 1.2rem;
@@ -647,7 +711,7 @@
             font-size: 0.9rem;
         }
 
-        /* --- Discord Widget (Modified for Dark Theme) --- */
+        
         .discord-widget {
             position: fixed;
             bottom: 20px;
@@ -717,7 +781,7 @@
         }
 
         .popup-header {
-            background: #1a1a21; /* Slightly different header bg */
+            background: #1a1a21;
             padding: 1rem 1.5rem;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
@@ -779,7 +843,7 @@
         }
 
         .discount-card {
-            background: #2a3340; /* Darker background for the callout */
+            background: #2a3340;
             border-radius: 8px;
             padding: 1.2rem;
             margin: 1.2rem 0;
@@ -798,7 +862,7 @@
         }
         
         .popup-online-count {
-            color: #2ecc71; /* Green for online status */
+            color: #2ecc71;
             font-weight: 500;
             margin-top: 0.75rem;
             display: block;
@@ -828,7 +892,7 @@
         }
 
 
-        /* --- Responsiveness --- */
+        
         @media (max-width: 900px) {
             .hero-title {
                 font-size: 3.5rem;
@@ -852,7 +916,8 @@
 
         @media (max-width: 600px) {
             .nav-container {
-                padding: 1rem;
+                padding: 0.7rem;
+                max-width: 95%; 
             }
             .nav-links {
                 gap: 1rem;
@@ -883,7 +948,7 @@
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav class="navbar" id="mainNavbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="#" style="text-decoration: none; display: flex; align-items: center; color: inherit;">
@@ -1296,20 +1361,24 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - document.querySelector('.nav-container').offsetHeight - 25;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
         
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 10px var(--color-shadow-dark)'; /* Keep dark theme shadow */
+        const mainNavbar = document.getElementById('mainNavbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                mainNavbar.classList.add('scrolled');
             } else {
-                navbar.style.boxShadow = 'none';
+                mainNavbar.classList.remove('scrolled');
             }
         });
 
@@ -1334,25 +1403,20 @@
             observer.observe(el);
         });
 
-        // Discord Widget and Pop-up Logic
         const discordWidget = document.getElementById('discordWidget');
         const discordPopup = document.getElementById('discordPopup');
         const closePopupBtn = document.getElementById('closePopupBtn');
         const discordBadge = document.getElementById('discordBadge');
 
-        // Toggle the popup when the widget is clicked
         discordWidget.addEventListener('click', function() {
             discordPopup.classList.toggle('active');
-            // Hide the badge when the popup is opened
             discordBadge.style.display = discordPopup.classList.contains('active') ? 'none' : 'flex';
         });
 
-        // Close the popup when the close button is clicked
         closePopupBtn.addEventListener('click', function() {
             discordPopup.classList.remove('active');
         });
 
-        // Close the popup if the user clicks anywhere outside of it
         document.addEventListener('click', function(event) {
             const isClickInside = discordPopup.contains(event.target) || discordWidget.contains(event.target);
             if (!isClickInside && discordPopup.classList.contains('active')) {
@@ -1361,7 +1425,6 @@
             }
         });
 
-        // Optional: Close on Escape key press
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && discordPopup.classList.contains('active')) {
                 discordPopup.classList.remove('active');
