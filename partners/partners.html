@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianLabs - Partners</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/qYt5Dqp4/New-Project-2.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <meta name="description" content="GuardianLabs Official Partners - Discover other professional communities and services we collaborate with.">
+    <meta name="theme-color" content="#1a202c"> 
+    
+    <style>
+        
+        :root {
+            --color-bg-dark: #0f0f13;
+            --color-bg-card: #1a1a21;
+            --color-bg-navbar: rgba(15, 15, 19, 0.95);
+            --color-border-dark: #2d3748;
+            --color-text-white: #ffffff;
+            --color-text-light: #a0a8b5;
+            
+            --color-primary-start: #9932CC; /* Purple */
+            --color-primary-end: #CC99FF; /* Light Purple */
+            --color-shadow-dark: rgba(0, 0, 0, 0.5);
+            --color-discord: #7289da;
+            
+            --color-bg-moving-1: #1a1a1e;
+            --color-bg-moving-2: #0f0f13;
+
+            /* New colors for partner tags */
+            --color-tag-featured: #f39c12; /* Orange/Gold for Featured */
+            --color-tag-new: #2ecc71; /* Green for New */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text-light);
+            overflow-x: hidden;
+            background: var(--color-bg-dark);
+            transition: background 0.3s, color 0.3s;
+            position: relative; 
+            z-index: 1;
+        }
+        
+        /* Subtle Moving Background from main.html */
+        @keyframes subtleMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250%;
+            height: 250%;
+            z-index: -1;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    var(--color-bg-moving-1) 0,
+                    var(--color-bg-moving-1) 1px,
+                    transparent 1px,
+                    transparent 10px
+                ),
+                radial-gradient(circle at 50% 50%, #1a1a21 0%, #0f0f13 70%); 
+            background-size: 300% 300%; 
+            animation: subtleMove 45s ease-in-out infinite alternate;
+            opacity: 0.8; 
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Gradient Text Style */
+        .gradient-text {
+            background: linear-gradient(to left, var(--color-primary-start), var(--color-primary-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        /* Navbar styles copied from main.html for navigation */
+        .logo-symbol-img {
+            height: 2.7rem; 
+            width: auto;
+            object-fit: contain;
+            vertical-align: middle; 
+            margin-right: -10px; 
+            margin-left: 0;
+            padding: 0;
+        }
+        .nav-logo a {
+            display: flex;
+            align-items: center;
+        }
+        .navbar {
+            position: sticky; 
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding-top: 10px; 
+            padding-bottom: 10px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 1.5rem; 
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 50px; 
+            background: rgba(15, 15, 19, 0.95); 
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(204, 153, 255, 0.2); 
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8), 0 0 10px rgba(153, 50, 204, 0.1); 
+        }
+        .nav-logo h2 {
+            color: var(--color-text-white);
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--color-text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-primary-end);
+        }
+        .docs-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            color: var(--color-text-white);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: 1px solid var(--color-border-dark);
+        }
+        .docs-btn:hover {
+            border-color: var(--color-primary-end);
+            color: var(--color-primary-end);
+            box-shadow: 0 0 10px rgba(204, 153, 255, 0.4);
+        }
+        .docs-btn svg {
+            stroke: currentColor;
+        }
+
+        /* Section Header Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-white);
+        }
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary-start), var(--color-primary-end));
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* NEW PARTNER CARD STYLES */
+        .partner-grid {
+            display: flex;
+            flex-direction: column; /* Stack vertically for a list look */
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .partner-card {
+            background: var(--color-bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--color-border-dark);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* Horizontal Layout */
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-primary-end);
+            box-shadow: 0 8px 25px rgba(153, 50, 204, 0.2);
+        }
+        
+        .partner-logo-container {
+            flex-shrink: 0;
+            margin-right: 1.5rem;
+            position: relative;
+        }
+
+        .partner-logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid transparent;
+            /* Added subtle gradient border/shadow */
+            background: linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
+                        linear-gradient(45deg, var(--color-primary-start), var(--color-primary-end)) border-box;
+            border-radius: 10px;
+            border: 2px solid transparent;
+        }
+
+        .partner-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .partner-title-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .partner-title-group h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-white);
+            line-height: 1;
+        }
+
+        .partner-tag {
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .tag-featured {
+            background-color: var(--color-tag-featured);
+            color: var(--color-bg-dark);
+        }
+
+        .tag-new {
+            background-color: var(--color-tag-new);
+            color: var(--color-bg-dark);
+        }
+
+        .partner-subtitle {
+            font-size: 1rem;
+            color: var(--color-text-light);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-description-header {
+            display: none; /* Hiding this for a cleaner horizontal look */
+        }
+        
+        .partner-description {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.5;
+            flex-grow: 1;
+            margin-top: 0.5rem;
+        }
+        
+        .partner-tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .tag-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #2a3340; 
+            color: var(--color-primary-end);
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #3d4a5c;
+        }
+        
+        .tag-item svg {
+            stroke: var(--color-primary-end);
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Right-side button and meta */
+        .partner-action {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+            padding-left: 2rem;
+            border-left: 1px solid var(--color-border-dark);
+            height: 100%;
+        }
+
+        .partner-meta {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            text-align: right;
+        }
+        
+        .partner-meta .partner-handle {
+            font-weight: 600;
+            color: var(--color-primary-end);
+            /* --- FIX: Display inline to keep date on the same line as "Partner since" --- */
+            display: inline-block; 
+            margin-left: 3px;
+        }
+
+        /* Discord Button Style */
+        .btn-discord {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background: var(--color-discord);
+            color: var(--color-text-white);
+            box-shadow: 0 4px 15px rgba(114, 137, 218, 0.4);
+            min-width: 150px;
+        }
+
+        .btn-discord:hover {
+            background: #5b6fb8;
+            box-shadow: 0 10px 30px rgba(114, 137, 218, 0.8); 
+            transform: translateY(-2px);
+        }
+        
+        .btn-discord svg {
+            stroke: currentColor;
+            fill: none;
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Footer styles from main.html */
+        .footer {
+            background: var(--color-bg-navbar);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--color-border-dark);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 4rem;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-section h3, .footer-section h4 {
+            color: var(--color-text-white);
+            font-weight: 800;
+            margin: 0 0 1.2rem 0;
+            font-size: 1.5rem;
+        }
+        .footer-section p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .footer-links a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        .footer-links a:hover {
+            color: var(--color-primary-end);
+        }
+        .footer-links a svg {
+            stroke: var(--color-text-light);
+            transition: stroke 0.3s ease;
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+        }
+        .footer-links a:hover svg {
+            stroke: var(--color-primary-end);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--color-border-dark);
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .partner-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.5rem;
+            }
+            
+            .partner-logo-container {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .partner-action {
+                width: 100%;
+                border-left: none;
+                border-top: 1px dashed var(--color-border-dark);
+                padding-top: 1.5rem;
+                padding-left: 0;
+                align-items: center;
+            }
+            
+            .btn-discord {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .partner-meta {
+                text-align: center;
+            }
+            
+            .partner-title-group h3 {
+                font-size: 1.3rem;
+            }
+            
+            .partner-subtitle {
+                font-size: 0.9rem;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="mainNavbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="main.html" style="text-decoration: none; display: flex; align-items: center; color: inherit;">
+                    <img src="https://i.ibb.co/60tDfZdm/image-2025-09-26-082224750-Photoroom.png" alt="GuardianLabs Logo" class="logo-symbol-img">
+                    <h2 style="margin: 0;">uardianLabs</h2>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="main.html#about" class="nav-link">About</a>
+                <a href="main.html#reviews" class="nav-link">Reviews</a>
+                <a href="main.html#store" class="nav-link">Store</a>
+                <a href="partners.html" class="nav-link active">Partners</a> 
+                <a href="https://guardiandevlabs.gitbook.io/guardiandevlabs" target="_blank" class="nav-link docs-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14,2 14,8 20,8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10,9 9,9 8,9"></polyline>
+                    </svg>
+                    Documentation
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="partners" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h1 class="section-title gradient-text">Official Partners</h1>
+                <div class="section-divider"></div>
+                <p style="font-size: 1.1rem; color: var(--color-text-light); margin-top: 1rem;">
+                    We collaborate with industry leaders to bring you the best service and quality.
+                </p>
+            </div>
+            
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/s9JjwcTG/a-86cbd45e8700877be219ecf75efd222b.webp" alt="Horizon Network Logo" class="partner-logo-img">
+                    </div>
+                    
+                    <div class="partner-content">
+                        <div class="partner-title-group">
+                            <h3>PrismBoosts</h3>
+                            <span class="partner-tag tag-featured">Featured</span>
+                        </div>
+                        <p class="partner-subtitle">The #1 Boosting Solution</p>
+                        <p class="partner-description">
+                           With Prism Boosts, an enterprise Discord server boosting solution, you can easily and automatically maintain your Discord boosts in line with the plan that best suits your needs.
+                        </p>
+                        <div class="partner-tags-list">
+                            <span class="tag-item">Discord Services</span>
+                            <span class="tag-item">Community</span>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-action">
+                         <div class="partner-meta">
+                            Partner since <span class="partner-handle">Nov 2025</span>
+                        </div>
+                        <a href="https://discord.gg/sfQ4EXneQq" target="_blank" class="btn-discord">
+                            <svg viewBox="0 0 640 512" fill="currentColor">
+                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            </svg>
+                            Join Discord
+                        </a>
+                    </div>
+                </div>
+
+            <div class="partner-grid">
+                
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/VdJJmxH/New-Project.png" alt="GuardianLabs Logo" class="partner-logo-img">
+                    </div>
+                    
+                    <div class="partner-content">
+                        <div class="partner-title-group">
+                            <h3>Code Guard</h3>
+                            <span class="partner-tag tag-new">New</span>
+                        </div>
+                        <p class="partner-subtitle">Our mission is simple: protect original content</p>
+                        <p class="partner-description">
+                           The leading source for FiveM standalone scripts. We focus on power, performance, and simplicity, delivering optimized, custom-built solutions to elevate your server experience.
+                        </p>
+                        <div class="partner-tags-list">
+                            <span class="tag-item">Discord Server Security</span>
+                            <span class="tag-item">Bot</span>
+                            <span class="tag-item">24/7 Support</span>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-action">
+                        <div class="partner-meta">
+                            Partner since <span class="partner-handle">Nov 2025</span>
+                        </div>
+                        <a href="https://discord.gg/guardianlabs" target="_blank" class="btn-discord">
+                            <svg viewBox="0 0 640 512" fill="currentColor">
+                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            </svg>
+                            Visit Discord
+                        </a>
+                    </div>
+                </div>
+                
+                
+                <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <img src="https://cdn.discordapp.com/attachments/1427893252882698381/1427893253209981008/FullLogoPNG.png?ex=693469f8&is=69331878&hm=906e2229341de0c575145c9da6fd857360f06721837cf73371ba45eee8d2b20a&" alt="HostingERLC Logo" class="partner-logo-img">
+                    </div>
+                    
+                    <div class="partner-content">
+                        <div class="partner-title-group">
+                            <h3>Arctic Development</h3>
+                            <span class="partner-tag tag-new">New</span>
+                        </div>
+                        <p class="partner-subtitle">immersive and optimized content</p>
+                        <p class="partner-description">
+                           At Arctic Development, we deliver premium solutions for FiveM & Discord. Whether you're building a professional roleplay server or enhancing your community engagement—we’ve got you covered.
+                        </p>
+                        <div class="partner-tags-list">
+                            <span class="tag-item">FiveM | Script Development</span>
+                            <span class="tag-item">FiveM | Vehicle Development</span>
+                            <span class="tag-item">FiveM | Graphics</span>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-action">
+                        <div class="partner-meta">
+                            Partner since <span class="partner-handle">Nov 2025</span>
+                        </div>
+                        <a href="https://discord.gg/AHqq4EBhhQ" target="_blank" class="btn-discord">
+                            <svg viewBox="0 0 640 512" fill="currentColor">
+                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            </svg>
+                            Join Discord
+                        </a>
+                    </div>
+                </div>
+
+                    <div class="partner-card">
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/qYkQWm6N/64ac6f389adf30c08c9686618435d871.webp" alt="Horizon Network Logo" class="partner-logo-img">
+                    </div>
+                    
+                    <div class="partner-content">
+                        <div class="partner-title-group">
+                            <h3>Elysium Studios</h3>
+                            <span class="partner-tag tag-new">New</span>
+                        </div>
+                        <p class="partner-subtitle">Elevate Your Digital Presence with Elysium Studios</p>
+                        <p class="partner-description">
+                           Premium website development, custom FiveM scripts, and Discord bots tailored for gaming communities and businesses.
+                        </p>
+                        <div class="partner-tags-list">
+                            <span class="tag-item">Website Development</span>
+                            <span class="tag-item">FiveM Scripts</span>
+                            <span class="tag-item">Discord Bots</span>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-action">
+                         <div class="partner-meta">
+                            Partner since <span class="partner-handle">Nov 2025</span>
+                        </div>
+                        <a href="https://discord.gg/F9ybRK7cKx" target="_blank" class="btn-discord">
+                            <svg viewBox="0 0 640 512" fill="currentColor">
+                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            </svg>
+                            Join Discord
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <a href="main.html" style="text-decoration: none; display: flex; align-items: center; color: inherit; margin-bottom: 1rem;">
+                        <img src="https://i.ibb.co/60tDfZdm/image-2025-09-26-082224750-Photoroom.png" alt="GuardianLabs Logo" class="logo-symbol-img">
+                        <h3 style="margin: 0; font-size: 1.5rem;">uardianLabs</h3>
+                    </a>
+                    <p>The #1 Script Solution</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="main.html#about">About</a>
+                        <a href="main.html#reviews">Reviews</a>
+                        <a href="https://guardianlabs.tebex.io" target="_blank">Store</a>
+                        <a href="https://guardiandevlabs.gitbook.io/guardiandevlabs" target="_blank">Documentation</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <div class="footer-links">
+                        <a href="https://discord.gg/guardianlabs" target="_blank" class="footer-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2c-3.37 0-6.11 2.47-6.11 5.5s2.74 5.5 6.11 5.5 6.11-2.47 6.11-5.5S15.37 2 12 2zM12 14c-4.42 0-8 3.58-8 8h16c0-4.42-3.58-8-8-8z"></path>
+                            </svg>
+                            Join Our Discord
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GuardianLabs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.partner-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
