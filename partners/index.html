@@ -20,17 +20,16 @@
             --color-text-white: #ffffff;
             --color-text-light: #a0a8b5;
             
-            --color-primary-start: #9932CC; /* Purple */
-            --color-primary-end: #CC99FF; /* Light Purple */
+            --color-primary-start: #9932CC;
+            --color-primary-end: #CC99FF;
             --color-shadow-dark: rgba(0, 0, 0, 0.5);
             --color-discord: #7289da;
             
             --color-bg-moving-1: #1a1a1e;
             --color-bg-moving-2: #0f0f13;
 
-            /* New colors for partner tags */
-            --color-tag-featured: #f39c12; /* Orange/Gold for Featured */
-            --color-tag-new: #2ecc71; /* Green for New */
+            --color-tag-featured: #f39c12;
+            --color-tag-new: #2ecc71;
         }
 
         * {
@@ -50,7 +49,6 @@
             z-index: 1;
         }
         
-        /* Subtle Moving Background from main.html */
         @keyframes subtleMove {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
@@ -85,7 +83,6 @@
             padding: 0 20px;
         }
 
-        /* Gradient Text Style */
         .gradient-text {
             background: linear-gradient(to left, var(--color-primary-start), var(--color-primary-end));
             -webkit-background-clip: text;
@@ -94,7 +91,6 @@
             text-fill-color: transparent;
         }
         
-        /* Navbar styles copied from main.html for navigation */
         .logo-symbol-img {
             height: 2.7rem; 
             width: auto;
@@ -174,7 +170,6 @@
             stroke: currentColor;
         }
 
-        /* Section Header Styles */
         .section {
             padding: 5rem 0;
             position: relative;
@@ -197,10 +192,9 @@
             border-radius: 2px;
         }
 
-        /* NEW PARTNER CARD STYLES */
         .partner-grid {
             display: flex;
-            flex-direction: column; /* Stack vertically for a list look */
+            flex-direction: column;
             gap: 1.5rem;
             padding: 1rem 0;
         }
@@ -212,7 +206,7 @@
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
             overflow: hidden;
             transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            display: flex; /* Horizontal Layout */
+            display: flex;
             align-items: center;
             padding: 1rem 1.5rem;
         }
@@ -235,7 +229,6 @@
             border-radius: 10px;
             object-fit: cover;
             border: 3px solid transparent;
-            /* Added subtle gradient border/shadow */
             background: linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
                         linear-gradient(45deg, var(--color-primary-start), var(--color-primary-end)) border-box;
             border-radius: 10px;
@@ -289,7 +282,7 @@
         }
 
         .partner-description-header {
-            display: none; /* Hiding this for a cleaner horizontal look */
+            display: none;
         }
         
         .partner-description {
@@ -326,7 +319,6 @@
             height: 14px;
         }
 
-        /* Right-side button and meta */
         .partner-action {
             flex-shrink: 0;
             display: flex;
@@ -347,12 +339,10 @@
         .partner-meta .partner-handle {
             font-weight: 600;
             color: var(--color-primary-end);
-            /* --- FIX: Display inline to keep date on the same line as "Partner since" --- */
             display: inline-block; 
             margin-left: 3px;
         }
 
-        /* Discord Button Style */
         .btn-discord {
             display: inline-flex;
             align-items: center;
@@ -385,7 +375,6 @@
             height: 18px;
         }
         
-        /* Footer styles from main.html */
         .footer {
             background: var(--color-bg-navbar);
             padding: 4rem 0 2rem;
@@ -443,7 +432,6 @@
             font-size: 0.9rem;
         }
         
-        /* Media Queries for Responsiveness */
         @media (max-width: 768px) {
             .partner-card {
                 flex-direction: column;
@@ -455,275 +443,11 @@
                 margin-right: 0;
                 margin-bottom: 1rem;
             }
-            
-            .partner-action {
-                width: 100%;
-                border-left: none;
-                border-top: 1px dashed var(--color-border-dark);
-                padding-top: 1.5rem;
-                padding-left: 0;
-                align-items: center;
-            }
-            
-            .btn-discord {
-                width: 100%;
-                min-width: auto;
-            }
-            
-            .partner-meta {
-                text-align: center;
-            }
-            
-            .partner-title-group h3 {
-                font-size: 1.3rem;
-            }
-            
-            .partner-subtitle {
-                font-size: 0.9rem;
-            }
         }
         
     </style>
 </head>
 <body>
 
-    <nav class="navbar" id="mainNavbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="main.html" style="text-decoration: none; display: flex; align-items: center; color: inherit;">
-                    <img src="https://i.ibb.co/60tDfZdm/image-2025-09-26-082224750-Photoroom.png" alt="GuardianLabs Logo" class="logo-symbol-img">
-                    <h2 style="margin: 0;">uardianLabs</h2>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="main.html#about" class="nav-link">About</a>
-                <a href="main.html#reviews" class="nav-link">Reviews</a>
-                <a href="main.html#store" class="nav-link">Store</a>
-                <a href="partners.html" class="nav-link active">Partners</a> 
-                <a href="https://guardiandevlabs.gitbook.io/guardiandevlabs" target="_blank" class="nav-link docs-btn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14,2 14,8 20,8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10,9 9,9 8,9"></polyline>
-                    </svg>
-                    Documentation
-                </a>
-            </div>
-        </div>
-    </nav>
-    
-    <section id="partners" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h1 class="section-title gradient-text">Official Partners</h1>
-                <div class="section-divider"></div>
-                <p style="font-size: 1.1rem; color: var(--color-text-light); margin-top: 1rem;">
-                    We collaborate with industry leaders to bring you the best service and quality.
-                </p>
-            </div>
-            
-                <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/s9JjwcTG/a-86cbd45e8700877be219ecf75efd222b.webp" alt="Horizon Network Logo" class="partner-logo-img">
-                    </div>
-                    
-                    <div class="partner-content">
-                        <div class="partner-title-group">
-                            <h3>PrismBoosts</h3>
-                            <span class="partner-tag tag-featured">Featured</span>
-                        </div>
-                        <p class="partner-subtitle">The #1 Boosting Solution</p>
-                        <p class="partner-description">
-                           With Prism Boosts, an enterprise Discord server boosting solution, you can easily and automatically maintain your Discord boosts in line with the plan that best suits your needs.
-                        </p>
-                        <div class="partner-tags-list">
-                            <span class="tag-item">Discord Services</span>
-                            <span class="tag-item">Community</span>
-                        </div>
-                    </div>
-                    
-                    <div class="partner-action">
-                         <div class="partner-meta">
-                            Partner since <span class="partner-handle">Nov 2025</span>
-                        </div>
-                        <a href="https://discord.gg/sfQ4EXneQq" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
-                            </svg>
-                            Join Discord
-                        </a>
-                    </div>
-                </div>
-
-            <div class="partner-grid">
-                
-                <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/VdJJmxH/New-Project.png" alt="GuardianLabs Logo" class="partner-logo-img">
-                    </div>
-                    
-                    <div class="partner-content">
-                        <div class="partner-title-group">
-                            <h3>Code Guard</h3>
-                            <span class="partner-tag tag-new">New</span>
-                        </div>
-                        <p class="partner-subtitle">Our mission is simple: protect original content</p>
-                        <p class="partner-description">
-                           The leading source for FiveM standalone scripts. We focus on power, performance, and simplicity, delivering optimized, custom-built solutions to elevate your server experience.
-                        </p>
-                        <div class="partner-tags-list">
-                            <span class="tag-item">Discord Server Security</span>
-                            <span class="tag-item">Bot</span>
-                            <span class="tag-item">24/7 Support</span>
-                        </div>
-                    </div>
-                    
-                    <div class="partner-action">
-                        <div class="partner-meta">
-                            Partner since <span class="partner-handle">Nov 2025</span>
-                        </div>
-                        <a href="https://discord.gg/guardianlabs" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
-                            </svg>
-                            Visit Discord
-                        </a>
-                    </div>
-                </div>
-                
-                
-                <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://cdn.discordapp.com/attachments/1427893252882698381/1427893253209981008/FullLogoPNG.png?ex=693469f8&is=69331878&hm=906e2229341de0c575145c9da6fd857360f06721837cf73371ba45eee8d2b20a&" alt="HostingERLC Logo" class="partner-logo-img">
-                    </div>
-                    
-                    <div class="partner-content">
-                        <div class="partner-title-group">
-                            <h3>Arctic Development</h3>
-                            <span class="partner-tag tag-new">New</span>
-                        </div>
-                        <p class="partner-subtitle">immersive and optimized content</p>
-                        <p class="partner-description">
-                           At Arctic Development, we deliver premium solutions for FiveM & Discord. Whether you're building a professional roleplay server or enhancing your community engagement—we’ve got you covered.
-                        </p>
-                        <div class="partner-tags-list">
-                            <span class="tag-item">FiveM | Script Development</span>
-                            <span class="tag-item">FiveM | Vehicle Development</span>
-                            <span class="tag-item">FiveM | Graphics</span>
-                        </div>
-                    </div>
-                    
-                    <div class="partner-action">
-                        <div class="partner-meta">
-                            Partner since <span class="partner-handle">Nov 2025</span>
-                        </div>
-                        <a href="https://discord.gg/AHqq4EBhhQ" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
-                            </svg>
-                            Join Discord
-                        </a>
-                    </div>
-                </div>
-
-                    <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/qYkQWm6N/64ac6f389adf30c08c9686618435d871.webp" alt="Horizon Network Logo" class="partner-logo-img">
-                    </div>
-                    
-                    <div class="partner-content">
-                        <div class="partner-title-group">
-                            <h3>Elysium Studios</h3>
-                            <span class="partner-tag tag-new">New</span>
-                        </div>
-                        <p class="partner-subtitle">Elevate Your Digital Presence with Elysium Studios</p>
-                        <p class="partner-description">
-                           Premium website development, custom FiveM scripts, and Discord bots tailored for gaming communities and businesses.
-                        </p>
-                        <div class="partner-tags-list">
-                            <span class="tag-item">Website Development</span>
-                            <span class="tag-item">FiveM Scripts</span>
-                            <span class="tag-item">Discord Bots</span>
-                        </div>
-                    </div>
-                    
-                    <div class="partner-action">
-                         <div class="partner-meta">
-                            Partner since <span class="partner-handle">Nov 2025</span>
-                        </div>
-                        <a href="https://discord.gg/F9ybRK7cKx" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
-                            </svg>
-                            Join Discord
-                        </a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <a href="main.html" style="text-decoration: none; display: flex; align-items: center; color: inherit; margin-bottom: 1rem;">
-                        <img src="https://i.ibb.co/60tDfZdm/image-2025-09-26-082224750-Photoroom.png" alt="GuardianLabs Logo" class="logo-symbol-img">
-                        <h3 style="margin: 0; font-size: 1.5rem;">uardianLabs</h3>
-                    </a>
-                    <p>The #1 Script Solution</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <div class="footer-links">
-                        <a href="main.html#about">About</a>
-                        <a href="main.html#reviews">Reviews</a>
-                        <a href="https://guardianlabs.tebex.io" target="_blank">Store</a>
-                        <a href="https://guardiandevlabs.gitbook.io/guardiandevlabs" target="_blank">Documentation</a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <div class="footer-links">
-                        <a href="https://discord.gg/guardianlabs" target="_blank" class="footer-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2c-3.37 0-6.11 2.47-6.11 5.5s2.74 5.5 6.11 5.5 6.11-2.47 6.11-5.5S15.37 2 12 2zM12 14c-4.42 0-8 3.58-8 8h16c0-4.42-3.58-8-8-8z"></path>
-                            </svg>
-                            Join Our Discord
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 GuardianLabs. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.partner-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
