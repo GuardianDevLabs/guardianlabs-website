@@ -14,23 +14,22 @@
         
         :root {
             --color-bg-dark: #0f0f13;
-            --color-bg-card: #1a1a21;
+            --color-bg-card: #15151b;
             --color-bg-navbar: rgba(15, 15, 19, 0.95);
             --color-border-dark: #2d3748;
             --color-text-white: #ffffff;
             --color-text-light: #a0a8b5;
             
-            --color-primary-start: #9932CC; /* Purple */
-            --color-primary-end: #CC99FF; /* Light Purple */
+            --color-primary-start: #9932CC;
+            --color-primary-end: #CC99FF;
             --color-shadow-dark: rgba(0, 0, 0, 0.5);
-            --color-discord: #7289da;
+            --color-discord: #5865F2;
             
             --color-bg-moving-1: #1a1a1e;
             --color-bg-moving-2: #0f0f13;
 
-            /* New colors for partner tags */
-            --color-tag-featured: #f39c12; /* Orange/Gold for Featured */
-            --color-tag-new: #2ecc71; /* Green for New */
+            --color-tag-featured: #f39c12; 
+            --color-tag-new: #2ecc71; 
         }
 
         * {
@@ -50,7 +49,6 @@
             z-index: 1;
         }
         
-        /* Subtle Moving Background from main.html */
         @keyframes subtleMove {
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
@@ -85,7 +83,6 @@
             padding: 0 20px;
         }
 
-        /* Gradient Text Style */
         .gradient-text {
             background: linear-gradient(to left, var(--color-primary-start), var(--color-primary-end));
             -webkit-background-clip: text;
@@ -94,7 +91,7 @@
             text-fill-color: transparent;
         }
         
-        /* Navbar styles copied from main.html for navigation */
+        /* Navbar styles */
         .logo-symbol-img {
             height: 2.7rem; 
             width: auto;
@@ -174,7 +171,6 @@
             stroke: currentColor;
         }
 
-        /* Section Header Styles */
         .section {
             padding: 5rem 0;
             position: relative;
@@ -196,196 +192,217 @@
             margin: 0 auto;
             border-radius: 2px;
         }
-
-        /* NEW PARTNER CARD STYLES */
         .partner-grid {
-            display: flex;
-            flex-direction: column; /* Stack vertically for a list look */
-            gap: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
             padding: 1rem 0;
         }
 
         .partner-card {
             background: var(--color-bg-card);
-            border-radius: 12px;
+            border-radius: 16px;
             border: 1px solid var(--color-border-dark);
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            display: flex; /* Horizontal Layout */
-            align-items: center;
-            padding: 1rem 1.5rem;
-        }
-
-        .partner-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--color-primary-end);
-            box-shadow: 0 8px 25px rgba(153, 50, 204, 0.2);
-        }
-        
-        .partner-logo-container {
-            flex-shrink: 0;
-            margin-right: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             position: relative;
         }
 
+        .partner-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary-end);
+            box-shadow: 0 12px 30px rgba(153, 50, 204, 0.15);
+        }
+
+        .card-banner {
+            width: 100%;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-banner::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(21, 21, 27, 0.8) 100%);
+        }
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #fff;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .status-badge.featured {
+            background: var(--color-tag-featured);
+            color: #000;
+        }
+        .status-badge.new {
+            background: var(--color-tag-new);
+            color: #000;
+        }
+        .partner-logo-container {
+            width: 72px;
+            height: 72px;
+            margin-top: -36px;
+            margin-left: 20px;
+            position: relative;
+            z-index: 5;
+            border-radius: 12px;
+            background: var(--color-bg-card);
+            padding: 4px;
+        }
+
         .partner-logo-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
             object-fit: cover;
-            border: 3px solid transparent;
-            /* Added subtle gradient border/shadow */
-            background: linear-gradient(var(--color-bg-card), var(--color-bg-card)) padding-box,
-                        linear-gradient(45deg, var(--color-primary-start), var(--color-primary-end)) border-box;
-            border-radius: 10px;
-            border: 2px solid transparent;
         }
 
         .partner-content {
+            padding: 10px 24px 20px 24px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
-        }
-        
-        .partner-title-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.3rem;
         }
 
         .partner-title-group h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--color-text-white);
-            line-height: 1;
-        }
-
-        .partner-tag {
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-
-        .tag-featured {
-            background-color: var(--color-tag-featured);
-            color: var(--color-bg-dark);
-        }
-
-        .tag-new {
-            background-color: var(--color-tag-new);
-            color: var(--color-bg-dark);
+            margin-bottom: 4px;
         }
 
         .partner-subtitle {
-            font-size: 1rem;
-            color: var(--color-text-light);
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-
-        .partner-description-header {
-            display: none; /* Hiding this for a cleaner horizontal look */
-        }
-        
-        .partner-description {
             font-size: 0.9rem;
             color: var(--color-text-light);
-            line-height: 1.5;
-            flex-grow: 1;
-            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            min-height: 2.6em;
         }
-        
+
         .partner-tags-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
+            gap: 8px;
+            margin-bottom: 1.2rem;
         }
 
         .tag-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-primary-end);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
-            background: #2a3340; 
-            color: var(--color-primary-end);
-            padding: 0.3rem 0.7rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border: 1px solid #3d4a5c;
+            gap: 4px;
         }
-        
         .tag-item svg {
-            stroke: var(--color-primary-end);
-            width: 14px;
-            height: 14px;
+            width: 10px;
+            height: 10px;
         }
 
-        /* Right-side button and meta */
-        .partner-action {
-            flex-shrink: 0;
+        .partner-description-wrapper {
             display: flex;
-            flex-direction: column;
-            align-items: flex-end;
             gap: 10px;
-            padding-left: 2rem;
-            border-left: 1px solid var(--color-border-dark);
-            height: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-icon {
+            flex-shrink: 0;
+            color: var(--color-primary-end);
+            margin-top: 2px;
+        }
+
+        .partner-description {
+            font-size: 0.9rem;
+            color: #bcc3cd;
+            line-height: 1.5;
+        }
+
+        .partner-action {
+            padding: 0 24px 24px 24px;
+            margin-top: auto;
         }
 
         .partner-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 0.8rem;
-            color: var(--color-text-light);
-            text-align: right;
-        }
-        
-        .partner-meta .partner-handle {
-            font-weight: 600;
-            color: var(--color-primary-end);
-            /* --- FIX: Display inline to keep date on the same line as "Partner since" --- */
-            display: inline-block; 
-            margin-left: 3px;
+            color: #8890a0;
+            margin-bottom: 15px;
         }
 
-        /* Discord Button Style */
+        .partner-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .partner-avatar svg {
+            width: 14px; 
+            height: 14px;
+            color: #fff;
+        }
+
+        .partner-handle {
+            color: var(--color-text-white);
+            font-weight: 600;
+        }
+
         .btn-discord {
-            display: inline-flex;
+            display: flex;
+            width: 100%;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            padding: 0.7rem 1.4rem;
+            padding: 0.8rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
             background: var(--color-discord);
-            color: var(--color-text-white);
-            box-shadow: 0 4px 15px rgba(114, 137, 218, 0.4);
-            min-width: 150px;
+            color: white;
         }
 
         .btn-discord:hover {
-            background: #5b6fb8;
-            box-shadow: 0 10px 30px rgba(114, 137, 218, 0.8); 
+            background: #4752c4;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
         }
         
         .btn-discord svg {
-            stroke: currentColor;
-            fill: none;
-            width: 18px;
-            height: 18px;
+            fill: currentColor;
+            width: 20px;
+            height: 20px;
         }
         
-        /* Footer styles from main.html */
         .footer {
             background: var(--color-bg-navbar);
             padding: 4rem 0 2rem;
@@ -442,44 +459,10 @@
             color: var(--color-text-light);
             font-size: 0.9rem;
         }
-        
-        /* Media Queries for Responsiveness */
+
         @media (max-width: 768px) {
-            .partner-card {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1.5rem;
-            }
-            
-            .partner-logo-container {
-                margin-right: 0;
-                margin-bottom: 1rem;
-            }
-            
-            .partner-action {
-                width: 100%;
-                border-left: none;
-                border-top: 1px dashed var(--color-border-dark);
-                padding-top: 1.5rem;
-                padding-left: 0;
-                align-items: center;
-            }
-            
-            .btn-discord {
-                width: 100%;
-                min-width: auto;
-            }
-            
-            .partner-meta {
-                text-align: center;
-            }
-            
-            .partner-title-group h3 {
-                font-size: 1.3rem;
-            }
-            
-            .partner-subtitle {
-                font-size: 0.9rem;
+            .partner-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -490,7 +473,7 @@
     <nav class="navbar" id="mainNavbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="main.html" style="text-decoration: none; display: flex; align-items: center; color: inherit;">
+                <a href="https://guardiandevlabs.com" style="text-decoration: none; display: flex; align-items: center; color: inherit;">
                     <img src="https://i.ibb.co/60tDfZdm/image-2025-09-26-082224750-Photoroom.png" alt="GuardianLabs Logo" class="logo-symbol-img">
                     <h2 style="margin: 0;">uardianLabs</h2>
                 </a>
@@ -498,8 +481,8 @@
             <div class="nav-links">
                 <a href="https://guardiandevlabs.com/#about" class="nav-link">About</a>
                 <a href="https://guardiandevlabs.com/#reviews" class="nav-link">Reviews</a>
-                <a href="main.html#store" class="nav-link">Store</a>
-                <a href="partners.html" class="nav-link active">Partners</a> 
+                <a href="https://guardiandevlabs.com/#store" class="nav-link">Store</a>
+                <a href="https://guardiandevlabs.com/partners/" class="nav-link active">Partners</a> 
                 <a href="https://guardiandevlabs.gitbook.io/guardiandevlabs" target="_blank" class="nav-link docs-btn">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -524,178 +507,252 @@
                 </p>
             </div>
             
-                <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/s9JjwcTG/a-86cbd45e8700877be219ecf75efd222b.webp" alt="Horizon Network Logo" class="partner-logo-img">
-                    </div>
-                    
-                    <div class="partner-content">
-                        <div class="partner-title-group">
-                            <h3>PrismBoosts</h3>
-                            <span class="partner-tag tag-featured">Featured</span>
-                        </div>
-                        <p class="partner-subtitle">The #1 Boosting Solution</p>
-                        <p class="partner-description">
-                           With Prism Boosts, an enterprise Discord server boosting solution, you can easily and automatically maintain your Discord boosts in line with the plan that best suits your needs.
-                        </p>
-                        <div class="partner-tags-list">
-                            <span class="tag-item">Discord Services</span>
-                            <span class="tag-item">Community</span>
-                        </div>
-                    </div>
-                    
-                    <div class="partner-action">
-                         <div class="partner-meta">
-                            Partner since <span class="partner-handle">Nov 2025</span>
-                        </div>
-                        <a href="https://discord.gg/sfQ4EXneQq" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
-                            </svg>
-                            Join Discord
-                        </a>
-                    </div>
-                </div>
-
             <div class="partner-grid">
                 
                 <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/VdJJmxH/New-Project.png" alt="GuardianLabs Logo" class="partner-logo-img">
+                    <div class="card-banner" style="background-image: url('https://i.ibb.co/ycJyfKRw/886d88e71d9cb254adc055f3261fc48b.jpg');">
+                        <div class="status-badge featured">
+                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+                            Featured
+                        </div>
                     </div>
                     
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/s9JjwcTG/a-86cbd45e8700877be219ecf75efd222b.webp" alt="PrismBoosts" class="partner-logo-img">
+                    </div>
+
+                    <div class="partner-content">
+                        <div class="partner-title-group">
+                            <h3>PrismBoosts</h3>
+                        </div>
+                        <p class="partner-subtitle">The #1 Boosting Solution</p>
+                        
+                        <div class="partner-tags-list">
+                            <span class="tag-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                                Discord Services
+                            </span>
+                            <span class="tag-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                                Community
+                            </span>
+                        </div>
+
+                        <div class="partner-description-wrapper">
+                            <svg class="quote-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p class="partner-description">
+                               With Prism Boosts, an enterprise Discord server boosting solution, you can easily and automatically maintain your Discord boosts in line with the plan that best suits your needs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="partner-action">
+                        <div class="partner-meta">
+                             <div class="partner-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                             </div>
+                             <span>Partner since <span class="partner-handle">Nov 2025</span></span>
+                        </div>
+                        <a href="https://discord.gg/sfQ4EXneQq" target="_blank" class="btn-discord">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                            </svg>
+                            Join Discord
+                        </a>
+                    </div>
+                </div>
+
+                <div class="partner-card">
+                    <div class="card-banner" style="background-image: url('https://i.ibb.co/PvHpj8M8/Code-Guard-4.png');">
+                        <div class="status-badge featured">
+                            <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg>
+                            Featured
+                        </div>
+                    </div>
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/VdJJmxH/New-Project.png" alt="Code Guard" class="partner-logo-img">
+                    </div>
                     <div class="partner-content">
                         <div class="partner-title-group">
                             <h3>Code Guard</h3>
-                            <span class="partner-tag tag-new">New</span>
                         </div>
-                        <p class="partner-subtitle">Our mission is simple: protect original content</p>
-                        <p class="partner-description">
-                           The leading source for FiveM standalone scripts. We focus on power, performance, and simplicity, delivering optimized, custom-built solutions to elevate your server experience.
-                        </p>
+                        <p class="partner-subtitle">Protect original content</p>
+                        
                         <div class="partner-tags-list">
-                            <span class="tag-item">Discord Server Security</span>
-                            <span class="tag-item">Bot</span>
-                            <span class="tag-item">24/7 Support</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Security</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path></svg>Bot</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>24/7</span>
+                        </div>
+
+                        <div class="partner-description-wrapper">
+                            <svg class="quote-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p class="partner-description">
+                               The leading source for FiveM standalone scripts. We focus on power, performance, and simplicity, delivering optimized, custom-built solutions to elevate your server experience.
+                            </p>
                         </div>
                     </div>
-                    
                     <div class="partner-action">
                         <div class="partner-meta">
-                            Partner since <span class="partner-handle">Dec 2025</span>
+                             <div class="partner-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                             </div>
+                             <span>Partner since <span class="partner-handle">Dec 2025</span></span>
                         </div>
                         <a href="https://discord.gg/TPFjJVAjFh" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
                             </svg>
-                            Visit Discord
-                        </a>
-                    </div>
-                </div>
-                
-                
-                <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://cdn.discordapp.com/attachments/1427893252882698381/1427893253209981008/FullLogoPNG.png?ex=693469f8&is=69331878&hm=906e2229341de0c575145c9da6fd857360f06721837cf73371ba45eee8d2b20a&" alt="HostingERLC Logo" class="partner-logo-img">
-                    </div>
-                    
-                    <div class="partner-content">
-                        <div class="partner-title-group">
-                            <h3>Arctic Development</h3>
-                            <span class="partner-tag tag-new">New</span>
-                        </div>
-                        <p class="partner-subtitle">immersive and optimized content</p>
-                        <p class="partner-description">
-                           At Arctic Development, we deliver premium solutions for FiveM & Discord. Whether you're building a professional roleplay server or enhancing your community engagement—we’ve got you covered.
-                        </p>
-                        <div class="partner-tags-list">
-                            <span class="tag-item">FiveM | Script Development</span>
-                            <span class="tag-item">FiveM | Vehicle Development</span>
-                            <span class="tag-item">FiveM | Graphics</span>
-                        </div>
-                    </div>
-                    
-                    <div class="partner-action">
-                        <div class="partner-meta">
-                            Partner since <span class="partner-handle">Oct 2025</span>
-                        </div>
-                        <a href="https://discord.gg/AHqq4EBhhQ" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
-                            </svg>
-                            Join Discord
+                              Join Discord
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg>
+
                         </a>
                     </div>
                 </div>
 
-                    <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/qYkQWm6N/64ac6f389adf30c08c9686618435d871.webp" alt="Horizon Network Logo" class="partner-logo-img">
+                <div class="partner-card">
+                    <div class="card-banner" style="background-image: url('https://i.ibb.co/p6gnPfkM/image-2025-12-06-014803919.png');">
                     </div>
-                    
+                    <div class="partner-logo-container">
+                        <img src="https://cdn.discordapp.com/attachments/1427893252882698381/1427893253209981008/FullLogoPNG.png?ex=693469f8&is=69331878&hm=906e2229341de0c575145c9da6fd857360f06721837cf73371ba45eee8d2b20a&" alt="Arctic" class="partner-logo-img">
+                    </div>
+                    <div class="partner-content">
+                        <div class="partner-title-group">
+                            <h3>Arctic Dev</h3>
+                        </div>
+                        <p class="partner-subtitle">Immersive and optimized content</p>
+                        
+                        <div class="partner-tags-list">
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>FiveM</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>Vehicles</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>Graphics</span>
+                        </div>
+
+                        <div class="partner-description-wrapper">
+                            <svg class="quote-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p class="partner-description">
+                               At Arctic Development, we deliver premium solutions for FiveM & Discord. Whether you're building a professional roleplay server or enhancing your community engagement—we’ve got you covered.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="partner-action">
+                        <div class="partner-meta">
+                             <div class="partner-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                             </div>
+                             <span>Partner since <span class="partner-handle">Oct 2025</span></span>
+                        </div>
+                        <a href="https://discord.gg/AHqq4EBhhQ" target="_blank" class="btn-discord">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
+                            </svg>
+                              Join Discord
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg>
+
+                        </a>
+                    </div>
+                </div>
+
+                <div class="partner-card">
+                    <div class="card-banner" style="background-image: url('https://i.ibb.co/RTQCd34g/eb59bf84d293180ae39fc00473a9c571.jpg');">
+                
+                    </div>
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/qYkQWm6N/64ac6f389adf30c08c9686618435d871.webp" alt="Elysium" class="partner-logo-img">
+                    </div>
                     <div class="partner-content">
                         <div class="partner-title-group">
                             <h3>Elysium Studios</h3>
-                            <span class="partner-tag tag-new">New</span>
                         </div>
-                        <p class="partner-subtitle">Elevate Your Digital Presence with Elysium Studios</p>
-                        <p class="partner-description">
-                           Premium website development, custom FiveM scripts, and Discord bots tailored for gaming communities and businesses.
-                        </p>
+                        <p class="partner-subtitle">Elevate Your Digital Presence</p>
+                        
                         <div class="partner-tags-list">
-                            <span class="tag-item">Website Development</span>
-                            <span class="tag-item">FiveM Scripts</span>
-                            <span class="tag-item">Discord Bots</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>Websites</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>Scripts</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path></svg>Bots</span>
+                        </div>
+
+                        <div class="partner-description-wrapper">
+                            <svg class="quote-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p class="partner-description">
+                               Premium website development, custom FiveM scripts, and Discord bots tailored for gaming communities and businesses.
+                            </p>
                         </div>
                     </div>
-                    
                     <div class="partner-action">
-                         <div class="partner-meta">
-                            Partner since <span class="partner-handle">Sep 2025</span>
+                        <div class="partner-meta">
+                             <div class="partner-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                             </div>
+                             <span>Partner since <span class="partner-handle">Sep 2025</span></span>
                         </div>
                         <a href="https://discord.gg/F9ybRK7cKx" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
                             </svg>
-                            Join Discord
+                              Join Discord
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg>
+
                         </a>
                     </div>
                 </div>
 
-                <div class="partner-card">
-                    <div class="partner-logo-container">
-                        <img src="https://i.ibb.co/JWTrbRBX/ab146a6552238a05165ae4bccc72e64c.webp" alt="Horizon Network Logo" class="partner-logo-img">
+                 <div class="partner-card">
+                    <div class="card-banner" style="background-image: url('https://i.ibb.co/cKvnFRRD/a-8025f12824f0bd087f46ad246ecd88d8.gif');">
+                         <div class="status-badge new">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-sparkles"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z" /></svg>
+                            New
+                        </div>
                     </div>
-                    
+                    <div class="partner-logo-container">
+                        <img src="https://i.ibb.co/JWTrbRBX/ab146a6552238a05165ae4bccc72e64c.webp" alt="Stateside" class="partner-logo-img">
+                    </div>
                     <div class="partner-content">
                         <div class="partner-title-group">
-                            <h3>Stateside Roleplay</h3>
-                            <span class="partner-tag tag-new">New</span>
+                            <h3>Stateside RP</h3>
                         </div>
                         <p class="partner-subtitle">GTA FiveM Roleplay Server</p>
-                        <p class="partner-description">
-                           Looking for a server that takes realism, professionalism, and quality roleplay seriously? Our vMenu-based community is built for players who want structure, immersion, and a place to actually enjoy RP without chaos or constant rule-breaking.
-                        </p>
+                        
                         <div class="partner-tags-list">
-                            <span class="tag-item">vMenu</span>
-                            <span class="tag-item">Serious & Realistic</span>
-                            <span class="tag-item">Active Staff & LEO</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>vMenu</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>Serious</span>
+                            <span class="tag-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>LEO</span>
+                        </div>
+
+                        <div class="partner-description-wrapper">
+                            <svg class="quote-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <p class="partner-description">
+                               Looking for a server that takes realism, professionalism, and quality roleplay seriously? Our vMenu-based community is built for players who want structure and immersion.
+                            </p>
                         </div>
                     </div>
-                    
                     <div class="partner-action">
-                         <div class="partner-meta">
-                            Partner since <span class="partner-handle">Dec 2025</span>
+                        <div class="partner-meta">
+                             <div class="partner-avatar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                             </div>
+                             <span>Partner since <span class="partner-handle">Dec 2025</span></span>
                         </div>
                         <a href="https://discord.gg/statesrp" target="_blank" class="btn-discord">
-                            <svg viewBox="0 0 640 512" fill="currentColor">
-                                <path d="M524.2 82.25l-2.6-3.8c-1.3-1.9-2.9-3.7-4.7-5.3S510.8 71 508.8 69.4c-4.2-3.1-8.7-5.7-13.4-7.8-8.8-4-18.4-6.4-28.3-7.2-22.1-1.8-44.5 1.5-65.7 8-11.2 3.4-22.2 7.8-32.9 13.5-31.9 16.9-63.5 37.8-93.5 59.9-10.8 7.9-21.4 16.1-31.7 24.6-9.6 8.3-19.1 16.7-28.4 25.2-1.2 1.1-2.3 2.1-3.4 3.2-10.2 9.5-20.2 19.1-29.9 28.9-1.3 1.3-2.5 2.5-3.8 3.8-3.3 3.3-6.6 6.5-9.8 9.8-1.7 1.7-3.3 3.4-5 5.1-6.1 6.1-12 12.3-17.7 18.6-1.5 1.6-3.1 3.2-4.6 4.8-1.2 1.3-2.4 2.5-3.6 3.8-11.8 12.5-23.2 25.4-34.1 38.6-2.5 3.1-5 6.2-7.3 9.4-4.5 6.1-8.7 12.3-12.8 18.6-1.1 1.6-2.2 3.2-3.3 4.8-3.4 5.3-6.5 10.7-9.5 16.2-1.9 3.5-3.8 7-5.6 10.5-2 3.8-3.9 7.7-5.6 11.6-1.8 4.3-3.3 8.7-4.7 13.1-1.3 4.2-2.5 8.5-3.5 12.8-1 4.5-1.7 9-2.3 13.6-1.6 11.8-1.6 23.8 0 35.8 1.4 10.1 4.2 20.1 8.5 29.8 3.5 7.9 7.9 15.6 13.3 22.8 5.7 7.6 12.3 14.8 19.6 21.4 7.6 6.8 15.9 12.9 24.8 17.9 18 10.2 37.9 15.6 57.9 16.2 3.1 0.1 6.3 0.1 9.4 0.1 27.5 0 55.4-5.3 81.6-15.6 7.6-3 15.1-6.3 22.5-9.9 2.5-1.2 4.9-2.5 7.4-3.8 1.5-0.7 3-1.4 4.5-2.2 4.1-2.1 8.2-4.3 12.2-6.7 1.8-1.1 3.5-2.2 5.3-3.4 2.8-1.9 5.5-3.9 8.2-5.9 3.1-2.4 6.2-4.9 9.2-7.5 10.4-9.3 20.2-19.1 29.3-29.2 1.4-1.6 2.7-3.2 4.1-4.8 9.5-11.4 18.5-23.2 26.8-35.3 2.1-3 4.2-6 6.2-9.1 1.7-2.6 3.4-5.2 5-7.9 3.1-5.3 6-10.7 8.7-16.2 1.1-2.1 2.2-4.2 3.2-6.3 2.4-5 4.5-10.2 6.4-15.5 1.3-3.6 2.4-7.2 3.4-10.9 0.9-3.7 1.6-7.5 2.2-11.3 0.6-3.8 1.1-7.7 1.5-11.5 0.5-4.4 0.7-8.9 0.7-13.4C542.4 105 534.6 93.6 524.2 82.25z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
                             </svg>
-                            Join Discord
+                         Join Discord
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M384 64C366.3 64 352 78.3 352 96C352 113.7 366.3 128 384 128L466.7 128L265.3 329.4C252.8 341.9 252.8 362.2 265.3 374.7C277.8 387.2 298.1 387.2 310.6 374.7L512 173.3L512 256C512 273.7 526.3 288 544 288C561.7 288 576 273.7 576 256L576 96C576 78.3 561.7 64 544 64L384 64zM144 160C99.8 160 64 195.8 64 240L64 496C64 540.2 99.8 576 144 576L400 576C444.2 576 480 540.2 480 496L480 416C480 398.3 465.7 384 448 384C430.3 384 416 398.3 416 416L416 496C416 504.8 408.8 512 400 512L144 512C135.2 512 128 504.8 128 496L128 240C128 231.2 135.2 224 144 224L224 224C241.7 224 256 209.7 256 192C256 174.3 241.7 160 224 160L144 160z"/></svg>
+
                         </a>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
@@ -723,8 +780,8 @@
                     <h4>Contact</h4>
                     <div class="footer-links">
                         <a href="https://discord.gg/guardianlabs" target="_blank" class="footer-link">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2c-3.37 0-6.11 2.47-6.11 5.5s2.74 5.5 6.11 5.5 6.11-2.47 6.11-5.5S15.37 2 12 2zM12 14c-4.42 0-8 3.58-8 8h16c0-4.42-3.58-8-8-8z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-discord" viewBox="0 0 16 16">
+                                <path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/>
                             </svg>
                             Join Our Discord
                         </a>
@@ -761,4 +818,3 @@
     </script>
 </body>
 </html>
-
